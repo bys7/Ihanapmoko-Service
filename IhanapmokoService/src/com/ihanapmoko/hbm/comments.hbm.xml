@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.ihanapmoko.bean.Comments"
+			table="comments">	
+	<id name="id" type="java.lang.Integer">
+		<column name="id"/>
+		<generator class="increment">
+		</generator>
+	</id>	
+	<property name="fullname" type="string">
+		<column name="fullname"/>
+	</property>
+	<property name="email_address" type="string">
+		<column name="email_address"/>
+	</property>
+	<property name="message" type="string">
+		<column name="message"/>
+	</property>
+	<property name="read_marker" type="java.lang.Integer">
+		<column name="read_marker"/>
+	</property>
+	
+	</class>
+</hibernate-mapping>

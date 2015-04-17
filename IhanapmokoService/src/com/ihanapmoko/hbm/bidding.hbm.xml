@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.ihanapmoko.bean.Bidding"
+			table="bidding">
+	<id name="id" type="java.lang.Integer">
+		<column name="id"/>
+		<generator class="increment">
+		</generator>
+	</id>
+	<property name="advertisement_id" type="java.lang.Integer">
+		<column name="advertisement_id"/>
+	</property>
+	<property name="user_id" type="java.lang.Integer">
+		<column name="user_id"/>
+	</property>
+	<property name="picture_id" type="java.lang.Integer">
+		<column name="picture_id"/>
+	</property>
+	<property name="comment" type="string">
+		<column name="comment"/>
+	</property>
+	<property name="date_posted" type="timestamp">
+			<column name="date_posted" />
+		</property>
+	
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.ihanapmoko.bean.User"
+			table="user">	
+	<id name="id" type="java.lang.Integer">
+		<column name="id"/>
+		<generator class="increment">
+		</generator>
+	</id>
+	<property name="email_address" type="string">
+		<column name="email_address"/>
+	</property>
+	<property name="password" type="string">
+		<column name="password"/>
+	</property>
+	<property name="firstname" type="string">
+		<column name="firstname"/>
+	</property>
+	<property name="middlename" type="string">
+		<column name="middlename"/>
+	</property>
+	<property name="lastname" type="string">
+		<column name="lastname"/>
+	</property>
+	<property name="contact_number" type="string">
+		<column name="contact_number"/>
+	</property>
+	<property name="date_created" type="timestamp">
+		<column name="date_created"/>
+	</property>
+	<property name="activated" type="string">
+		<column name="activated"/>
+	</property>
+	<property name="role_id" type="java.lang.Integer">
+		<column name="role_id"/>
+	</property>
+	
+	</class>
+	
+</hibernate-mapping>

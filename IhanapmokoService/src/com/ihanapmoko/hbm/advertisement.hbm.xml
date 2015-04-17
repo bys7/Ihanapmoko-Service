@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.ihanapmoko.bean.Advertisement"
+			table="advertisement">
+		<id name="id" type="java.lang.Integer">
+			<column name="id"/>
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="advertisement" type="string">
+			<column name="advertisemnt" />
+		</property>
+		<property name="category_id" type="int">
+			<column name="category_id" />
+		</property> 		
+		<property name="contact_number" type="string">
+			<column name="contact_number" />
+		</property>
+		<property name="number_is_private" type="string">
+			<column name="number_is_private" />
+		</property>
+		<property name="email_address" type="string">
+			<column name="email_address" />
+		</property>
+		<property name="date_created" type="timestamp">
+			<column name="date_created" />
+		</property>
+	
+	</class>
+
+
+</hibernate-mapping>
