@@ -28,7 +28,30 @@
 		<property name="date_created" type="timestamp">
 			<column name="date_created" />
 		</property>
-	
+		<property name="location_id" type="int">
+			<column name="location_id" />
+		</property> 
+		<property name="budget" type="string">
+			<column name="budget" />
+		</property>
+		<property name="password" type="string">
+			<column name="password" />
+		</property>
+		<property name="description" type="string">
+			<column name="description" />
+		</property>
+		<property name="active_status" type="string">
+			<column name="active_status" />
+		</property>
+		<property name="picture_id" type="int">
+			<column name="picture_id" />
+		</property>
+		<property name="views" type="int">
+			<column name="views" />
+		</property>
+		<property name="condition" type="string">
+			<column name="condition" />
+		</property>	
 	</class>
 
 

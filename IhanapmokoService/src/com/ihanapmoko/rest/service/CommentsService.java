@@ -38,14 +38,14 @@ public class CommentsService {
 			
 			jsonComments = jsonResult.get(ServiceMethodNames.CREATE_COMMENT).toString();
 			
+			sr.setObj(jsonComments);
 			sr.setStatus(0);
-			sr.setDescription("SR Processed Successfully.");
-			sr.setObj(jsonComments);
+			sr.setDescription("SR Processed Successfully.");			
 			
-		}catch(Exception e){			
-			sr.setStatus(-1);
-			sr.setDescription("System Error.");
+		}catch(Exception e){		
 			sr.setObj(jsonComments);
+			sr.setStatus(-1);
+			sr.setDescription("System Error.");		
 			
 			e.printStackTrace();
 		}

@@ -54,4 +54,38 @@ public class AdvertisementService {
 		return sr;
 	}
 	
+	@POST
+	@Consumes ("application/json")
+	@Produces ("application/json")
+	@Path("/createAdvertisement")
+	public ServiceResult createAdvertisement(String params){
+		
+		System.out.println(this.getClass().getName() + " START ~ createAdvertisement()");
+		
+		ServiceResult sr 			= new ServiceResult();
+		String jsonAdvertisement	= null;
+		
+		try{
+			NameValuePair[] valuePairs = (NameValuePair[]) serviceFactory.getMapper( NameValuePair[].class, params);
+			
+			AdvertisementManager manager = new AdvertisementManager();
+			JSONObject jsonResult = manager.getJSONResponse(valuePairs);
+					
+			jsonAdvertisement = jsonResult.get(ServiceMethodNames.CREATE_ADVERTISEMENT).toString();
+			
+			sr.setObj(jsonAdvertisement);
+			sr.setStatus(0);
+			sr.setDescription("SR Processed Successfully.");
+		}catch(Exception e){
+			sr.setObj(jsonAdvertisement);
+			sr.setStatus(-1);
+			sr.setDescription("System Error.");		
+			
+			e.printStackTrace();
+		}
+		
+		
+		return sr;
+	}
+	
 }

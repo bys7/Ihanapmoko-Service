@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
+import com.ihanapmoko.bean.Advertisement;
 import com.ihanapmoko.bean.SearchResult;
 import com.ihanapmoko.dao.AdvertisementDAO;
 import com.ihanapmoko.utility.HibernateManager;
@@ -72,6 +72,24 @@ public class AdvertisementDAOImpl extends GenericDAOImpl implements Advertisemen
 		
 		return searchResultList;
 		
+	}
+	
+	public boolean create(Advertisement advertisement){
+		boolean result = false;
+		
+		try{
+			if(advertisement!=null){
+				return save(advertisement);
+			}else{
+				return false;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			closeSession();
+		}
+		
+		return result;
 	}
 	
 }

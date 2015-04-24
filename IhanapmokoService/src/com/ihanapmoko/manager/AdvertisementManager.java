@@ -33,6 +33,19 @@ public class AdvertisementManager {
 			String jsonSearch = serviceFactory.parseObject(search);
 			
 			json.put(ServiceMethodNames.SEARCH_ADVERTISEMENT, jsonSearch);
+		}else if(serviceMethod.equals(ServiceMethodNames.CREATE_ADVERTISEMENT)){
+			String jsonBean = params[1].getValue();
+			
+			Advertisement advertisement = (Advertisement) serviceFactory.getMapper(Advertisement.class, jsonBean);
+			
+			boolean hasAdded = advertisementDao.create(advertisement);
+			
+			System.out.println("-- Query Result : " + hasAdded);
+			System.out.println("-- Created ID   : " + advertisement.getId());
+			
+			String jsonAdvertisement = hasAdded ? serviceFactory.parseObject(advertisement) : "" ;
+			
+			json.put(ServiceMethodNames.CREATE_ADVERTISEMENT, jsonAdvertisement);
 		}
 		
 		return json;
