@@ -37,7 +37,8 @@ public class AdvertisementDAOImpl extends GenericDAOImpl implements Advertisemen
 					"OR a.description LIKE '%" + searchParameter + "%' " +
 					"OR b.category LIKE '%" + searchParameter + "%' " +
 					"AND a.location_id = c.id " +
-					"AND a.picture_id = d.id ")
+					"AND a.picture_id = d.id " +
+					"GROUP BY a.id")
 					
 					.addScalar("ID", Hibernate.INTEGER)
 					.addScalar("ADVERTISEMENT", Hibernate.STRING)

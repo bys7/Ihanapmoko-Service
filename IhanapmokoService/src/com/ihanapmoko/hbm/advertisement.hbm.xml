@@ -11,7 +11,7 @@
 			</generator>
 		</id>
 		<property name="advertisement" type="string">
-			<column name="advertisemnt" />
+			<column name="advertisement" />
 		</property>
 		<property name="category_id" type="int">
 			<column name="category_id" />
@@ -49,8 +49,8 @@
 		<property name="views" type="int">
 			<column name="views" />
 		</property>
-		<property name="condition" type="string">
-			<column name="condition" />
+		<property name="item_condition" type="string">
+			<column name="item_condition" />
 		</property>	
 	</class>
 
