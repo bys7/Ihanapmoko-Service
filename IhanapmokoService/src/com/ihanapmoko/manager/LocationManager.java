@@ -34,6 +34,16 @@ public class LocationManager {
 			
 			json.put(ServiceMethodNames.FETCH_ALL_LOCATION, jsonClient);
 			
+		}else if(serviceMethod.equals(ServiceMethodNames.FETCH_LOCATION_BY_ID)){
+			
+			int id = Integer.valueOf(params[1].getValue());
+			
+			Location location = locationDao.getLocationById(id);
+			
+			String jsonClient = serviceFactory.parseObject(location);
+			
+			json.put(ServiceMethodNames.FETCH_LOCATION_BY_ID, jsonClient);
+			
 		}
 		
 		return json;

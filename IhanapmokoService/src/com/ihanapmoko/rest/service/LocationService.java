@@ -51,4 +51,36 @@ public class LocationService {
 		return sr;
 	}
 	
+	@POST
+	@Consumes ("application/json")
+	@Produces ("application/json")
+	@Path("/fetchLocationById")
+	public ServiceResult fetchLocationById(String params){
+		System.out.println(this.getClass().getName() + " START ~ fetchLocationById()");
+		
+		ServiceResult sr 		= new ServiceResult();
+		String jsonLocation		= null;
+		
+		try{
+			NameValuePair[] valuePairs = (NameValuePair[]) serviceFactory.getMapper( NameValuePair[].class, params);
+			
+			LocationManager manager = new LocationManager();
+			JSONObject jsonResult = manager.getJSONResponse(valuePairs);
+			
+			jsonLocation = jsonResult.get(ServiceMethodNames.FETCH_LOCATION_BY_ID).toString();
+			
+			sr.setObj(jsonLocation);
+			sr.setStatus(0);
+			sr.setDescription("SR Processed Successfully.");
+		}catch(Exception e){
+			sr.setStatus(-1);
+			sr.setDescription("System Error.");
+			sr.setObj(null);
+			e.printStackTrace();
+		}
+		
+		System.out.println(this.getClass().getName() + " END ~ fetchLocationById()");
+		
+		return sr;
+	}	
 }

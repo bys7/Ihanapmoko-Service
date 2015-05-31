@@ -7,6 +7,7 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 import com.ihanapmoko.bean.Advertisement;
+import com.ihanapmoko.bean.Category;
 import com.ihanapmoko.bean.SearchResult;
 import com.ihanapmoko.dao.AdvertisementDAO;
 import com.ihanapmoko.dao.DAOFactory;
@@ -40,12 +41,29 @@ public class AdvertisementManager {
 			
 			boolean hasAdded = advertisementDao.create(advertisement);
 			
-			System.out.println("-- Query Result : " + hasAdded);
-			System.out.println("-- Created ID   : " + advertisement.getId());
-			
 			String jsonAdvertisement = hasAdded ? serviceFactory.parseObject(advertisement) : "" ;
 			
 			json.put(ServiceMethodNames.CREATE_ADVERTISEMENT, jsonAdvertisement);
+		}else if(serviceMethod.equals(ServiceMethodNames.FETCH_ADVERTISEMENT_BY_ID)){
+			
+			int id = Integer.valueOf(params[1].getValue());
+			
+			Advertisement advertisement = advertisementDao.getAdvertisementById(id);
+			
+			String jsonClient = serviceFactory.parseObject(advertisement);
+			
+			json.put(ServiceMethodNames.FETCH_ADVERTISEMENT_BY_ID, jsonClient);
+			
+		}else if(serviceMethod.equals(ServiceMethodNames.FETCH_ADVERTISEMENT_BY_PICTURE_ID)){
+			
+			int picture_id = Integer.valueOf(params[1].getValue());
+			
+			Advertisement advertisement = advertisementDao.getAdvertisementByPictureId(picture_id);
+			
+			String jsonClient = serviceFactory.parseObject(advertisement);
+			
+			json.put(ServiceMethodNames.FETCH_ADVERTISEMENT_BY_PICTURE_ID, jsonClient);
+			
 		}
 		
 		return json;

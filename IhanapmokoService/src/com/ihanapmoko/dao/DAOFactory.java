@@ -5,6 +5,8 @@ import com.ihanapmoko.bean.Category;
 import com.ihanapmoko.bean.Comments;
 import com.ihanapmoko.bean.FilterLookup;
 import com.ihanapmoko.bean.Location;
+import com.ihanapmoko.bean.Pictures;
+import com.ihanapmoko.bean.PicturesServices;
 import com.ihanapmoko.bean.User;
 import com.ihanapmoko.daoimpl.AdvertisementDAOImpl;
 import com.ihanapmoko.daoimpl.CategoryDAOImpl;
@@ -12,6 +14,8 @@ import com.ihanapmoko.daoimpl.CommentsDAOImpl;
 import com.ihanapmoko.daoimpl.FilterLookupDAOImpl;
 import com.ihanapmoko.daoimpl.GenericDAOImpl;
 import com.ihanapmoko.daoimpl.LocationDAOImpl;
+import com.ihanapmoko.daoimpl.PicturesDAOImpl;
+import com.ihanapmoko.daoimpl.PicturesServicesDAOImpl;
 import com.ihanapmoko.daoimpl.UserDAOImpl;
 
 public final class DAOFactory {
@@ -32,6 +36,10 @@ public final class DAOFactory {
 			return new LocationDAOImpl();
 		}else if(c.equals(FilterLookup.class)){
 			return new FilterLookupDAOImpl();
+		}else if(c.equals(Pictures.class)){
+			return new PicturesDAOImpl();
+		}else if(c.equals(PicturesServices.class)){
+			return new PicturesServicesDAOImpl();
 		}
 		
 		else{

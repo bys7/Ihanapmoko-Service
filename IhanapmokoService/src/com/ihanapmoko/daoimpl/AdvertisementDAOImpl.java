@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Expression;
 
 import com.ihanapmoko.bean.Advertisement;
+import com.ihanapmoko.bean.Category;
 import com.ihanapmoko.bean.SearchResult;
 import com.ihanapmoko.dao.AdvertisementDAO;
 import com.ihanapmoko.utility.HibernateManager;
@@ -71,8 +74,7 @@ public class AdvertisementDAOImpl extends GenericDAOImpl implements Advertisemen
 			closeSession();
 		}
 		
-		return searchResultList;
-		
+		return searchResultList;		
 	}
 	
 	public boolean create(Advertisement advertisement){
@@ -91,6 +93,68 @@ public class AdvertisementDAOImpl extends GenericDAOImpl implements Advertisemen
 		}
 		
 		return result;
+	}
+	
+	public Advertisement getAdvertisementById(int id){
+		Advertisement advertisement = new Advertisement();
+		
+		Session session   	= null;
+		Criteria criteria 	= null;
+		List<Advertisement> list = null;
+		
+		try{
+			session = HibernateManager.getMySql();
+			session.beginTransaction();
+			
+			criteria = session.createCriteria(Advertisement.class)
+					.add(Expression.eq("id", id));
+			
+			list = criteria.list();
+			
+			if(list!=null){
+				advertisement = list.get(0);
+			}
+			
+			session.getTransaction().commit();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			closeSession();
+		}
+		
+		return advertisement;
+	}
+	
+	public Advertisement getAdvertisementByPictureId(int picture_id){
+		Advertisement advertisement = new Advertisement();
+		
+		Session session   	= null;
+		Criteria criteria 	= null;
+		List<Advertisement> list = null;
+		
+		try{
+			session = HibernateManager.getMySql();
+			session.beginTransaction();
+			
+			criteria = session.createCriteria(Advertisement.class)
+					.add(Expression.eq("picture_id", picture_id));
+			
+			list = criteria.list();
+			
+			if(list!=null){
+				advertisement = list.get(0);
+			}
+			
+			session.getTransaction().commit();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			closeSession();
+		}
+		
+		return advertisement;
 	}
 	
 }

@@ -51,4 +51,38 @@ public class CategoryService {
 		return sr;
 		
 	}
+	
+	@POST
+	@Consumes ("application/json")
+	@Produces ("application/json")
+	@Path("/fetchCategoryById")
+	public ServiceResult fetchCategoryById(String params){
+		System.out.println(this.getClass().getName() + " START ~ fetchCategoryById()");
+		
+		ServiceResult sr 		= new ServiceResult();
+		String jsonCategory 	= null;
+		
+		try{
+			NameValuePair[] valuePairs = (NameValuePair[]) serviceFactory.getMapper( NameValuePair[].class, params);
+			
+			CategoryManager manager = new CategoryManager();
+			JSONObject jsonResult = manager.getJSONResponse(valuePairs);
+			
+			jsonCategory = jsonResult.get(ServiceMethodNames.FETCH_CATEGORY_BY_ID).toString();
+			
+			sr.setObj(jsonCategory);
+			sr.setStatus(0);
+			sr.setDescription("SR Processed Successfully.");
+		}catch(Exception e){
+			sr.setStatus(-1);
+			sr.setDescription("System Error.");
+			sr.setObj(null);
+			e.printStackTrace();
+		}
+		
+		System.out.println(this.getClass().getName() + " END ~ fetchCategoryById()");
+		
+		return sr;
+		
+	}
 }

@@ -33,6 +33,16 @@ public class CategoryManager {
 			
 			json.put(ServiceMethodNames.FETCH_ALL_CATEGORY, jsonClient);
 			
+		}else if(serviceMethod.equals(ServiceMethodNames.FETCH_CATEGORY_BY_ID)){
+			
+			int id = Integer.valueOf(params[1].getValue());
+			
+			Category category = categoryDao.getCategoryById(id);
+			
+			String jsonClient = serviceFactory.parseObject(category);
+			
+			json.put(ServiceMethodNames.FETCH_CATEGORY_BY_ID, jsonClient);
+			
 		}
 		
 		return json;
