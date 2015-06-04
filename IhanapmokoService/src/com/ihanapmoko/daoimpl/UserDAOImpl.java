@@ -58,11 +58,12 @@ public class UserDAOImpl extends GenericDAOImpl implements UserDAO  {
 					.add(Expression.eq("email_address",email_address))
 					.add(Expression.eq("password",password));
 			
-			List<User> userList = criteria.list();
-			System.out.println("USER LIST SIZE:" + userList.size());
-			if(userList!=null && userList.size()>0){
-				result = userList.get(0);
-			}
+			result = (User) criteria.uniqueResult();
+            if(result!=null){
+            	System.out.println("USER ID: " + result.getId());
+            }else{
+            	System.out.println("NO USER WITH MATCHING EMAIL AND PASSWORD");
+            }
 			
 			session.getTransaction().commit();			
 			

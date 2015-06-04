@@ -29,7 +29,10 @@ public class UserManager {
 			
 			User user = userDao.getUserByEmailAndPassword(email_address, password);
 			
-			System.out.println("USER DATE CREATED:" + user.getDate_created());
+			if (user!=null) {
+				System.out.println("USER DATE CREATED:"
+						+ user.getDate_created());
+			}
 			
 			String jsonClient = serviceFactory.parseObject(user);
 			
