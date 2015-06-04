@@ -10,4 +10,10 @@ public interface UserDAO {
 	
 	public User getUserByEmailAndPassword(String email_address, String password);
 	
+    public boolean create(User user);
+	
+	public boolean update(User user);
+	
+	public User getUserById(int id);
+	
 }

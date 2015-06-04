@@ -57,4 +57,87 @@ public class UserService {
 		
 	}
 	
+	@POST
+	@Consumes ("application/json")
+	@Produces ("application/json")
+	@Path("/getById")
+	public ServiceResult getuserById(String params){
+		
+		ServiceResult serviceResult = new ServiceResult();
+		String jsonUser = null;
+		
+		try {
+			NameValuePair[] valuePairs = (NameValuePair[]) serviceFactory.getMapper(NameValuePair[].class, params);
+			UserManager manager = new UserManager();
+			JSONObject jsonResult = manager.getJSONResponse(valuePairs);
+			jsonUser = jsonResult.get(ServiceMethodNames.GET_USER_BY_ID).toString();
+			serviceResult.setObj(jsonUser.toString());
+			serviceResult.setStatus(0);
+			serviceResult.setDescription("SR Processed Successfully.");
+			
+		} catch (Exception e) {
+			serviceResult.setStatus(-1);
+			serviceResult.setDescription("System Error.");
+			serviceResult.setObj(null);
+			e.printStackTrace();
+		}
+		
+		return serviceResult;
+	}
+	
+	@POST
+	@Consumes ("application/json")
+	@Produces ("application/json")
+	@Path("/create")
+	public ServiceResult createUser(String params){
+		
+		ServiceResult serviceResult = new ServiceResult();
+		String jsonUser = null;
+		
+		try {
+			NameValuePair[] valuePairs = (NameValuePair[]) serviceFactory.getMapper(NameValuePair[].class, params);
+			UserManager manager = new UserManager();
+			JSONObject jsonResult = manager.getJSONResponse(valuePairs);
+			jsonUser = jsonResult.get(ServiceMethodNames.CREATE_USER).toString();
+			serviceResult.setObj(jsonUser.toString());
+			serviceResult.setStatus(0);
+			serviceResult.setDescription("SR Processed Successfully.");
+			
+		} catch (Exception e) {
+			serviceResult.setStatus(-1);
+			serviceResult.setDescription("System Error.");
+			serviceResult.setObj(null);
+			e.printStackTrace();
+		}
+		
+		return serviceResult;
+	}
+	
+	@POST
+	@Consumes ("application/json")
+	@Produces ("application/json")
+	@Path("/update")
+	public ServiceResult updateUser(String params){
+		
+		ServiceResult sr = new ServiceResult();
+		String jsonUser	 = null;
+		
+		try{
+			NameValuePair[] valuePairs = (NameValuePair[]) serviceFactory.getMapper( NameValuePair[].class, params);
+			UserManager manager = new UserManager();
+			JSONObject jsonResult = manager.getJSONResponse(valuePairs);
+			jsonUser 			  = jsonResult.get(ServiceMethodNames.UPDATE_USER).toString();
+			sr.setStatus(0);
+			sr.setDescription("SR Processed Successfully.");
+			sr.setObj(jsonUser);
+			
+		}catch(Exception e){
+			sr.setStatus(-1);
+			sr.setDescription("System Error.");
+			sr.setObj(jsonUser);
+			e.printStackTrace();
+		}
+		return sr;
+	}
+	
 }

@@ -29,13 +29,44 @@ public class UserManager {
 			
 			User user = userDao.getUserByEmailAndPassword(email_address, password);
 			
-			System.out.println("USER DATE CREATED:" + user.getDate_created());
+			if (user!=null) {
+				System.out.println("USER DATE CREATED:"
+						+ user.getDate_created());
+			}
 			
 			String jsonClient = serviceFactory.parseObject(user);
 			
 			json.put(ServiceMethodNames.GET_EMAIL_AND_PASSWORD, jsonClient);
 			
 		}
+		
+		 if(serviceMethod.equals(ServiceMethodNames.CREATE_USER)){
+				
+				String jsonBean = params[1].getValue();
+				User bean = (User) serviceFactory.getMapper(User.class, jsonBean);
+				boolean isCreated = userDao.create(bean);
+				System.out.println("query result: " + isCreated);
+				System.out.println("created id: " + bean.getId());
+				String jsonClient = isCreated ? serviceFactory.parseObject(bean) : "";
+				json.put(ServiceMethodNames.CREATE_USER, jsonClient);
+			}
+	        
+	        if(serviceMethod.equals(ServiceMethodNames.GET_USER_BY_ID)){
+	        	String id	= params[1].getValue();
+				User user = userDao.getUserById(Integer.parseInt(id));
+				String jsonClient = serviceFactory.parseObject(user);
+				json.put(ServiceMethodNames.GET_USER_BY_ID, jsonClient);
+	        }
+	        
+	        if(serviceMethod.equals(ServiceMethodNames.UPDATE_USER)){
+				String jsonBean = params[1].getValue();
+				User bean       = (User) serviceFactory.getMapper( User.class, jsonBean);
+				boolean isCreated   = userDao.update(bean);
+				System.out.println("-- Query Result : " + isCreated);
+				System.out.println("-- Updated ID   : " + bean.getId());
+				String jsonClient = serviceFactory.parseObject(bean);
+				json.put(ServiceMethodNames.UPDATE_USER, jsonClient);
+			}
 		
 		
 		return json;
