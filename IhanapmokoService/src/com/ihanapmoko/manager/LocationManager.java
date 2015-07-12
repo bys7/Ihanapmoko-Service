@@ -30,9 +30,9 @@ public class LocationManager {
 			
 			List<Location> locationList = locationDao.getAllLocation();
 						
-			String jsonClient = serviceFactory.parseObject(locationList);
+			String jsonLocation = serviceFactory.parseObject(locationList);
 			
-			json.put(ServiceMethodNames.FETCH_ALL_LOCATION, jsonClient);
+			json.put(ServiceMethodNames.FETCH_ALL_LOCATION, jsonLocation);
 			
 		}else if(serviceMethod.equals(ServiceMethodNames.FETCH_LOCATION_BY_ID)){
 			
@@ -40,9 +40,9 @@ public class LocationManager {
 			
 			Location location = locationDao.getLocationById(id);
 			
-			String jsonClient = serviceFactory.parseObject(location);
+			String jsonLocation = serviceFactory.parseObject(location);
 			
-			json.put(ServiceMethodNames.FETCH_LOCATION_BY_ID, jsonClient);
+			json.put(ServiceMethodNames.FETCH_LOCATION_BY_ID, jsonLocation);
 			
 		}
 		

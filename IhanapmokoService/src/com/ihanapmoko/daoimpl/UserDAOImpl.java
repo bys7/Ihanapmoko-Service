@@ -140,4 +140,38 @@ public class UserDAOImpl extends GenericDAOImpl implements UserDAO  {
 		return result;
 	}
 	
+	@Override
+	public User validateUserByEmail(String email_address){
+		
+		User result			= null;
+		
+		Session session   	= null;
+		Criteria criteria 	= null;
+		
+		try{
+			session = HibernateManager.getMySql();
+			session.beginTransaction();
+			
+			criteria = session.createCriteria(User.class)
+					.add(Expression.eq("email_address",email_address));
+			
+			result = (User) criteria.list().get(0);
+            if(result!=null){
+            	System.out.println("USER ID: " + result.getId());
+            }else{
+            	System.out.println("NO USER WITH MATCHING EMAIL AND PASSWORD");
+            }
+			
+			session.getTransaction().commit();			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			closeSession();
+		}
+		
+		return result;
+		
+	}
+	
 }

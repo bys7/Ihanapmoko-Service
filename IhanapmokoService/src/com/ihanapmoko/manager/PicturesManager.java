@@ -31,9 +31,9 @@ public class PicturesManager {
 			
 			Pictures picture = picturesDao.getPictureById(id);
 			
-			String jsonClient = serviceFactory.parseObject(picture);
+			String jsonPictures = serviceFactory.parseObject(picture);
 			
-			json.put(ServiceMethodNames.FETCH_PICTURE_BY_ID, jsonClient);
+			json.put(ServiceMethodNames.FETCH_PICTURE_BY_ID, jsonPictures);
 			
 		}else if(serviceMethod.equals(ServiceMethodNames.FETCH_PICTURE_BY_NAME)){
 			
@@ -41,9 +41,9 @@ public class PicturesManager {
 			
 			Pictures picture = picturesDao.getPictureByName(name);
 			
-			String jsonClient = serviceFactory.parseObject(picture);
+			String jsonPictures = serviceFactory.parseObject(picture);
 			
-			json.put(ServiceMethodNames.FETCH_PICTURE_BY_NAME, jsonClient);
+			json.put(ServiceMethodNames.FETCH_PICTURE_BY_NAME, jsonPictures);
 			
 		}else if(serviceMethod.equals(ServiceMethodNames.FETCH_PICTURE_BY_AD_ID)){
 			
@@ -51,9 +51,9 @@ public class PicturesManager {
 			
 			List<Pictures> picture = picturesDao.fetchPicturesByAdvertisementId(advertisementId);
 			
-			String jsonClient = serviceFactory.parseObject(picture);
+			String jsonPictures = serviceFactory.parseObject(picture);
 			
-			json.put(ServiceMethodNames.FETCH_PICTURE_BY_AD_ID, jsonClient);
+			json.put(ServiceMethodNames.FETCH_PICTURE_BY_AD_ID, jsonPictures);
 			
 		}else if(serviceMethod.equals(ServiceMethodNames.CREATE_PICTURES)){
 			String jsonBean = params[1].getValue();

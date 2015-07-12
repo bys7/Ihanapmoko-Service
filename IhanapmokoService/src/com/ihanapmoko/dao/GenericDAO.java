@@ -8,7 +8,7 @@ public interface GenericDAO {
 
 	public boolean edit(Object o);
 
-	public boolean delete(Object o);
+	public boolean remove(Object o);
 
 	public Object findById(Long id);
 

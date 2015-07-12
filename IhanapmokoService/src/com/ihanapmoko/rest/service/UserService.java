@@ -140,4 +140,39 @@ public class UserService {
 		return sr;
 	}
 	
+	@POST
+	@Consumes ("application/json")
+	@Produces ("application/json")
+	@Path("/validateEmail")
+	public ServiceResult validateEmail(String params){
+		System.out.println(this.getClass().getName() + " START ~ validateEmail()");
+		
+		ServiceResult sr 		= new ServiceResult();
+		String jsonUser 		= null;
+		
+		try{
+			NameValuePair[] valuePairs = (NameValuePair[]) serviceFactory.getMapper( NameValuePair[].class, params);
+
+			UserManager manager = new UserManager();
+			JSONObject jsonResult = manager.getJSONResponse(valuePairs);
+			
+//			JSONArray jArray = new JSONArray(jsonResult.get(ServiceMethodNames.GET_EMAIL_AND_PASSWORD).toString());
+			jsonUser = jsonResult.get(ServiceMethodNames.VALIDATE_EMAIL).toString();
+			
+			sr.setObj(jsonUser.toString());
+			sr.setStatus(0);
+			sr.setDescription("SR Processed Successfully.");
+		}catch(Exception e){			
+			sr.setStatus(-1);
+			sr.setDescription("System Error.");
+			sr.setObj(null);
+			e.printStackTrace();
+		}
+		
+		System.out.println(this.getClass().getName() + " END ~ validateEmail()");
+		
+		return sr;
+		
+		
+	}
 }

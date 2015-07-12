@@ -67,7 +67,7 @@ public class GenericDAOImpl implements GenericDAO{
 		return result;
 	}
 
-	public boolean delete(Object o) {
+	public boolean remove(Object o) {
 
 		boolean result = false;
 

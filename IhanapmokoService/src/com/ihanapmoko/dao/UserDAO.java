@@ -16,4 +16,6 @@ public interface UserDAO {
 	
 	public User getUserById(int id);
 	
+	public User validateUserByEmail(String email_address);
+	
 }

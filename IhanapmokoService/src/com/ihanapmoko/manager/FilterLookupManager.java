@@ -29,9 +29,9 @@ public JSONObject getJSONResponse(NameValuePair[] params)	throws JSONException {
 			
 			List<FilterLookup> filterLookupList = filterLookupDao.getAllFilterLookup();
 						
-			String jsonClient = serviceFactory.parseObject(filterLookupList);
+			String jsonFilterLookup = serviceFactory.parseObject(filterLookupList);
 			
-			json.put(ServiceMethodNames.FETCH_ALL_FILTERLOOKUP, jsonClient);
+			json.put(ServiceMethodNames.FETCH_ALL_FILTERLOOKUP, jsonFilterLookup);
 			
 		}
 		

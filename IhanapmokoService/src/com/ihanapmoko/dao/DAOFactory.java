@@ -1,6 +1,7 @@
 package com.ihanapmoko.dao;
 
 import com.ihanapmoko.bean.Advertisement;
+import com.ihanapmoko.bean.Bidding;
 import com.ihanapmoko.bean.Category;
 import com.ihanapmoko.bean.Comments;
 import com.ihanapmoko.bean.FilterLookup;
@@ -9,6 +10,8 @@ import com.ihanapmoko.bean.Pictures;
 import com.ihanapmoko.bean.PicturesServices;
 import com.ihanapmoko.bean.User;
 import com.ihanapmoko.daoimpl.AdvertisementDAOImpl;
+import com.ihanapmoko.daoimpl.AdvertisementServicesDAOImpl;
+import com.ihanapmoko.daoimpl.BiddingDAOImpl;
 import com.ihanapmoko.daoimpl.CategoryDAOImpl;
 import com.ihanapmoko.daoimpl.CommentsDAOImpl;
 import com.ihanapmoko.daoimpl.FilterLookupDAOImpl;
@@ -40,6 +43,10 @@ public final class DAOFactory {
 			return new PicturesDAOImpl();
 		}else if(c.equals(PicturesServices.class)){
 			return new PicturesServicesDAOImpl();
+		}else if(c.equals(Bidding.class)){
+			return new BiddingDAOImpl();
+		}else if(c.equals(AdvertisementServicesDAO.class)){
+			return new AdvertisementServicesDAOImpl();
 		}
 		
 		else{

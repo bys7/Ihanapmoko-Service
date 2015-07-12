@@ -29,9 +29,9 @@ public class CategoryManager {
 			
 			List<Category> categoryList = categoryDao.getAllCategory();
 						
-			String jsonClient = serviceFactory.parseObject(categoryList);
+			String jsonCategory = serviceFactory.parseObject(categoryList);
 			
-			json.put(ServiceMethodNames.FETCH_ALL_CATEGORY, jsonClient);
+			json.put(ServiceMethodNames.FETCH_ALL_CATEGORY, jsonCategory);
 			
 		}else if(serviceMethod.equals(ServiceMethodNames.FETCH_CATEGORY_BY_ID)){
 			
@@ -39,9 +39,9 @@ public class CategoryManager {
 			
 			Category category = categoryDao.getCategoryById(id);
 			
-			String jsonClient = serviceFactory.parseObject(category);
+			String jsonCategory = serviceFactory.parseObject(category);
 			
-			json.put(ServiceMethodNames.FETCH_CATEGORY_BY_ID, jsonClient);
+			json.put(ServiceMethodNames.FETCH_CATEGORY_BY_ID, jsonCategory);
 			
 		}
 		
